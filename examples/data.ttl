@@ -1,0 +1,18 @@
+@prefix dh: <http://ns.bergnet.org/dark-horse/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<> a dh:State;
+  dh:powerState dh:Off;
+  dh:color [
+    # 6500k
+    #dh:colorTemperature "6500"^^xsd:double;
+    #dh:colorx "0.3135279229340493"^^xsd:double;
+    #dh:colory "0.32353408205098594"^^xsd:double;
+
+    # 2800k
+    dh:colorTemperature "2800"^^xsd:double;
+    #dh:colorx "0.4517858481841586"^^xsd:double;
+    #dh:colory "0.4084997542219667"^^xsd:double;
+
+    dh:brightness "0.75"^^xsd:double
+  ].

@@ -1,0 +1,86 @@
+@base <http://ns.bergnet.org/dark-horse/>.
+
+@prefix hydra: <http://www.w3.org/ns/hydra/core#>.
+@prefix code: <https://code.described.at/>.
+@prefix hydrabox: <http://hydra-box.org/schema/>.
+@prefix schema: <http://schema.org/>.
+
+hydra:Container a hydra:Class;
+  hydra:supportedOperation
+    <container#get>.
+
+<container#get> a hydra:SupportedOperation;
+  hydra:method "GET";
+  hydra:returns hydra:Container;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/container.js#get>
+  ].
+
+<LightGroup> a hydra:Class;
+  hydra:supportedOperation
+    <group#get>,
+    <group#put>;
+  hydra:supportedProperty [ a hydra:SupportedProperty;
+    hydra:property <state>;
+    hydra:supportedOperation
+      <state#get>,
+      <state#put>
+  ].
+
+<group#get> a hydra:SupportedOperation;
+  hydra:method "GET";
+  hydra:returns <LightGroup>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/group.js#get>
+  ].
+
+<group#put> a hydra:SupportedOperation;
+  hydra:method "PUT";
+  hydra:expects <LightState>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/group.js#put>
+  ].
+
+<Light> a hydra:Class;
+  hydra:supportedOperation
+    <light#get>,
+    <light#put>;
+  hydra:supportedProperty [ a hydra:SupportedProperty;
+    hydra:property <state>;
+    hydra:supportedOperation
+      <state#get>,
+      <state#put>
+  ].
+
+<light#get> a hydra:SupportedOperation;
+  hydra:method "GET";
+  hydra:returns <Light>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/light.js#get>
+  ].
+
+<light#put> a hydra:SupportedOperation;
+  hydra:method "PUT";
+  hydra:expects <LightState>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/light.js#put>
+  ].
+
+<LightState> a hydra:Class;
+  hydra:supportedOperation
+    <state#get>,
+    <state#put>.
+
+<state#get> a hydra:SupportedOperation;
+  hydra:method "GET";
+  hydra:returns <LightState>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/state.js#get>
+  ].
+
+<state#put> a hydra:SupportedOperation;
+  hydra:method "PUT";
+  hydra:expects <LightState>;
+  code:implementedBy [ a code:EcmaScriptModule;
+    code:link <file:./lib/api/state.js#put>
+  ].
