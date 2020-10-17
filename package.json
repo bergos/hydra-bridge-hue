@@ -1,5 +1,5 @@
 {
-  "name": "hydra-bridge-hue",
+  "name": "@dark-horse/hydra-bridge-hue",
   "description": "Hydra bridge for Hue",
   "version": "0.0.0",
   "type": "module",
