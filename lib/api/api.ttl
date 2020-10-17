@@ -21,10 +21,7 @@ hydra:Container a hydra:Class;
     <group#get>,
     <group#put>;
   hydra:supportedProperty [ a hydra:SupportedProperty;
-    hydra:property <state>;
-    hydra:supportedOperation
-      <state#get>,
-      <state#put>
+    hydra:property <state>
   ].
 
 <group#get> a hydra:SupportedOperation;
@@ -46,10 +43,7 @@ hydra:Container a hydra:Class;
     <light#get>,
     <light#put>;
   hydra:supportedProperty [ a hydra:SupportedProperty;
-    hydra:property <state>;
-    hydra:supportedOperation
-      <state#get>,
-      <state#put>
+    hydra:property <state>
   ].
 
 <light#get> a hydra:SupportedOperation;
@@ -65,6 +59,11 @@ hydra:Container a hydra:Class;
   code:implementedBy [ a code:EcmaScriptModule;
     code:link <file:./lib/api/light.js#put>
   ].
+
+<state>
+  hydra:supportedOperation
+    <state#get>,
+    <state#put>.
 
 <LightState> a hydra:Class;
   hydra:supportedOperation
