@@ -1,3 +1,4 @@
+import { dirname, join } from 'path'
 import express from 'express'
 import once from 'lodash/once.js'
 import hydraBox from 'hydra-box/middleware.js'
@@ -7,13 +8,14 @@ import EsmLoader from 'rdf-loader-code/ecmaScriptModule.js'
 import Loader from './lib/api/Loader.js'
 
 async function middleware (config) {
+  const bridgePath = dirname((new URL(import.meta.url)).pathname)
   const hue = hueApi.v3.api.createLocal(config.hue.host).connect(config.hue.user)
 
   // wait for the first request to figure out the used basePath
   const init = once(async ({ basePath }) => {
-    const api = await Api.fromFile('./lib/api/api.ttl', {
+    const api = await Api.fromFile(join(bridgePath, './lib/api/api.ttl'), {
       path: '/api',
-      codePath: process.cwd()
+      codePath: bridgePath
     })
 
     // hydra-box doesn't register the ESM loader yet by default
